@@ -7,16 +7,16 @@ import java.util.List;
 
 public class LandingPage extends PageObject {
 
-    @FindBy(css = "#home_logo_reel .container-full-width")
+    @FindBy(css = "[id='home_logo_reel'] [class='container-full-width']")
     public WebElement homeLogoReel;
 
     @FindBy(css = "[id='wt-cli-accept-all-btn']")
     public WebElement acceptCookieButton;
 
-    @FindBy(css = "#navbarDropdownMenuLink")
+    @FindBy(css = "[id='navbarDropdownMenuLink']")
     public List<WebElement> mainNavigationItems;
 
-    @FindBy(css = "[class*=\"dropdown-menu new-menu-dropdown-layout-6\"] .dropdown-sub")
+    @FindBy(css = "[class*='dropdown-menu new-menu-dropdown-layout-6'] .dropdown-sub")
     public List<WebElement> companyMenuSubItems;
 
     public void hoverOverNavigationItemByText(String targetMenuItem) {
@@ -24,6 +24,7 @@ public class LandingPage extends PageObject {
         for (WebElement item : mainNavigationItems) {
             if (item.getText().trim().equals(targetMenuItem)) {
                 hoverOver(item);
+                break;
             }
         }
     }

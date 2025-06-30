@@ -15,7 +15,7 @@ import static common.StatusWatcher.TestStatus.*;
 @ExtendWith(StatusWatcher.class)
 public class BaseTest {
 
-    static Printer log = new Printer(BaseTest.class);
+    public Printer log = new Printer(BaseTest.class);
     public ElementAcquisition.PageObjectModel<ObjectRepository> acquisition = new ElementAcquisition.PageObjectModel<>(ObjectRepository.class);
 
     @BeforeAll
