@@ -49,14 +49,17 @@ mvn clean test
     headless=false
     element-timeout=30000
 
-## Test Structure
+## Structure
 
 
 UI automation follows the Page Object Model for clarity and maintainability.
 
+* BrowserType enum for easily switch browser types.
+* Driver Factory initializes and tears down the browser.
 * Each page object has its own class under main/java/pages.
 * The ObjectRepository provides easy access to all pages, initializing each with the current Web driver.
 * UI interaction methods are used from the Pickleib library.
 * All element locators are generated before the interactions, and all actions are defined in the test cases.
+* Screenshots taken during test failures are saved in `/screemshots` directory.
 
 
