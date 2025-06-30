@@ -1,11 +1,15 @@
 package common;
 
-import com.github.webdriverextensions.WebDriverExtensionFieldDecorator;
+import driver.Driver;
+import pickleib.utilities.element.acquisition.ElementAcquisition;
 import pickleib.web.PickleibPageObject;
-import pickleib.web.driver.PickleibWebDriver;
 
 public class PageObject extends PickleibPageObject {
+
+    public ElementAcquisition.Reflections<ObjectRepository> reflections = new ElementAcquisition.Reflections<>(ObjectRepository.class);
+
     public PageObject() {
-        super(new WebDriverExtensionFieldDecorator(PickleibWebDriver.get()));
+        super(Driver.driver);
     }
+
 }
