@@ -23,13 +23,6 @@ public class ApplicationTests extends BaseTest {
         landingPage.log.important("Verifying the URL is https://useinsider.com/");
         landingPage.verifyCurrentUrl("https://useinsider.com/");
 
-        landingPage.log.important("Selecting 'Quality Assurance' under the Filter by Department container");
-        WebElement filterByDepartmentContainer = acquisition.acquireElementFromPage("filterByDepartmentContainer", "QualityAssuranceJobsPage");
-        qualityAssuranceJobsPage.clickTowards(filterByDepartmentContainer);
-        WebElement qualityAssurance = acquisition.acquireListedElementFromPage("Quality Assurance", "filterItems", "QualityAssuranceJobsPage");
-        qualityAssuranceJobsPage.clickElement(qualityAssurance);
-
-
         landingPage.log.important("Accepting cookies");
         WebElement acceptCookieButton = acquisition.acquireElementFromPage("acceptCookieButton", "LandingPage");
         landingPage.clickElement(acceptCookieButton);
@@ -82,11 +75,11 @@ public class ApplicationTests extends BaseTest {
         WebElement istanbul = acquisition.acquireListedElementFromPage("Istanbul, Turkiye", "filterItems", "QualityAssuranceJobsPage");
         qualityAssuranceJobsPage.clickElement(istanbul);
 
-        //landingPage.log.important("Selecting 'Quality Assurance' under the Filter by Department container");
-        //WebElement filterByDepartmentContainer = acquisition.acquireElementFromPage("filterByDepartmentContainer", "QualityAssuranceJobsPage");
-        //qualityAssuranceJobsPage.clickTowards(filterByDepartmentContainer);
-        //WebElement qualityAssurance = acquisition.acquireListedElementFromPage("Quality Assurance", "filterItems", "QualityAssuranceJobsPage");
-        //qualityAssuranceJobsPage.clickElement(qualityAssurance);
+        landingPage.log.important("Selecting 'Quality Assurance' under the Filter by Department container");
+        WebElement filterByDepartmentContainer = acquisition.acquireElementFromPage("filterByDepartmentContainer", "QualityAssuranceJobsPage");
+        qualityAssuranceJobsPage.clickTowards(filterByDepartmentContainer);
+        WebElement qualityAssurance = acquisition.acquireListedElementFromPage("Quality Assurance", "filterItems", "QualityAssuranceJobsPage");
+        qualityAssuranceJobsPage.clickElement(qualityAssurance);
 
         landingPage.log.important("Verifying the listed jobs contains 'Quality Assurance' and 'Istanbul, Turkiye'");
         qualityAssuranceJobsPage.verifyTheListedJobConfigurations("qualityassurance", "istanbul-turkiye");
