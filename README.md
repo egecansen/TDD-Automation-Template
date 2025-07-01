@@ -3,7 +3,7 @@
 This project is a automation testing framework built with JUnit 5, Selenium, and Pickleib library, designed to support UI automation.
 UI automation follows the Page Object Model for clarity and maintainability.
 
-* **BrowserType enum** for easily switch browser types.
+* BrowserType enum for easily switch browser types.
 * Driver class initializes and tears down the browser.
 * Each page object has its own class under main/java/pages.
 * The ObjectRepository provides easy access to all pages, initializing each during the flow execution.
