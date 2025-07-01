@@ -60,10 +60,10 @@ mvn clean test
 
 ## Additions
 
-* Case1 is the requested user flow that checks the Quality Assurance Job details
-* Case2 is sending a demo request with using an LLM to generate user data.
-    * To be able to use the LLM feature, provided ollama-api token needs to be stored in the test.properties file.
-* Case3 is following the tutorial until the Web Templates on-site campaign section.
+* Case 1 focuses on validating the Quality Assurance Job details, covering the requested user flow. 
+* Case 2 demonstrates sending a demo request, leveraging an LLM to generate user data.
+    * To enable the LLM functionality, the provided Ollama API token must be stored in the test.properties file. 
+* Case 3 follows the tutorial up to and including the Web Templates on-site campaign section. 
 
 
 
