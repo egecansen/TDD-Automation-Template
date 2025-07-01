@@ -3,13 +3,14 @@
 This project is a automation testing framework built with JUnit 5, Selenium, and Pickleib library, designed to support UI automation.
 UI automation follows the Page Object Model for clarity and maintainability.
 
-* BrowserType enum for easily switch browser types.
-* Driver Factory initializes and tears down the browser.
+* **BrowserType enum** for easily switch browser types.
+* Driver class initializes and tears down the browser.
 * Each page object has its own class under main/java/pages.
-* The ObjectRepository provides easy access to all pages, initializing each with the current Web driver.
+* The ObjectRepository provides easy access to all pages, initializing each during the flow execution.
 * UI interaction methods are used from the Pickleib library.
 * All element locators are generated before the interactions, and all actions are defined in the test cases.
 * Screenshots taken during test failures are saved in `/screemshots` directory.
+* This framework can be used in headless mode by setting the property on `test.properties` file.
 
 ## Features
 
@@ -23,6 +24,8 @@ UI automation follows the Page Object Model for clarity and maintainability.
 - Maven 3.5.x
 - Selenium 4.3.x 
 - JUnit 5
+- Pickleib 2.0.x
+- Ollama Api 0.0.x
 
 
 ## Getting Started
@@ -57,6 +60,9 @@ mvn clean test
 
     headless=false
     element-timeout=30000
+
+    ollama-url=https://i-bora.com/ollama/
+    ollama-token=
 
 ## Additions
 
