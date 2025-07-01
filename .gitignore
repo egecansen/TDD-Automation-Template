@@ -25,3 +25,4 @@ replay_pid*
 /.idea/
 /screenshots/
 /target/
+*/.DS_Store/
