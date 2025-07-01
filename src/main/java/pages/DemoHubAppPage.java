@@ -1,10 +1,10 @@
 package pages;
 
-import common.PageObject;
+import common.BaseObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class DemoHubAppPage extends PageObject {
+public class DemoHubAppPage extends BaseObject {
 
     @FindBy(css = "#main--frame:first-of-type")
     public WebElement iframe;

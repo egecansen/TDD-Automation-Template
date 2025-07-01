@@ -4,9 +4,7 @@ import org.junit.jupiter.api.extension.TestExecutionExceptionHandler;
 import org.junit.jupiter.api.extension.TestWatcher;
 import utils.Printer;
 import utils.StringUtilities;
-
 import java.util.Objects;
-
 
 public class StatusWatcher implements TestWatcher, TestExecutionExceptionHandler {
 
@@ -26,7 +24,6 @@ public class StatusWatcher implements TestWatcher, TestExecutionExceptionHandler
     @Override
     public void testSuccessful(ExtensionContext context) {
         log.success("PASSED: " + context.getDisplayName());
-        TestStatus.clear();
     }
 
     @Override

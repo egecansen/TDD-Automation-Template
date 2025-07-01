@@ -1,15 +1,16 @@
 package pages;
 
-import common.PageObject;
+import common.BaseObject;
 import junit.framework.Assert;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.enums.ElementState;
+import utils.Printer;
 
 import java.util.List;
 
-public class QualityAssuranceJobsPage extends PageObject {
+public class QualityAssuranceJobsPage extends BaseObject {
+
+    static  Printer log = new Printer(QualityAssuranceJobsPage.class);
 
     @FindBy(css = "[data-select2-id='1']")
     public WebElement filterByLocationContainer;
@@ -41,7 +42,7 @@ public class QualityAssuranceJobsPage extends PageObject {
     @FindBy(css = "[class*='position-list-item-wrapper'] a")
     public WebElement viewRoleButton;
 
-    public void verifyTheListedJobConfigurations(String expectedTeam, String expectedLocation) {
+    public static void verifyTheListedJobConfigurations(String expectedTeam, String expectedLocation) {
         List<WebElement> jobs = reflections.getElementsFromPage("listedJobs", "QualityAssuranceJobsPage");
         int count = 1;
         for (WebElement job : jobs) {

@@ -1,14 +1,11 @@
-package steps;
+package common;
 
-import common.BrowserType;
-import common.ObjectRepository;
-import common.StatusWatcher;
 import context.ContextStore;
 import driver.Driver;
-import okhttp3.Headers;
 import ollama.Ollama;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import pickleib.utilities.element.acquisition.ElementAcquisition;
 import pickleib.utilities.screenshot.ScreenCaptureUtility;
 import utils.Printer;
@@ -17,17 +14,22 @@ import static common.StatusWatcher.TestStatus.*;
 @ExtendWith(StatusWatcher.class)
 public class BaseTest {
 
-    public Printer log = new Printer(BaseTest.class);
+    public static Ollama ollama;
+    public BaseObject base = new BaseObject();
+    public static Printer log = new Printer(BaseTest.class);
     public ElementAcquisition.PageObjectModel<ObjectRepository> acquisition = new ElementAcquisition.PageObjectModel<>(ObjectRepository.class);
-    public Ollama ollama = new Ollama(
-            ContextStore.get("ollama-url").toString(),
-            Headers.of("Authorization", "Bearer " + ContextStore.get("ollama-token").toString(),
-                    "Content-Length", "20166")
-    );
+    public static RemoteWebDriver driver;
 
     @BeforeAll
     public static void globalSetup() {
-        Driver.setup(BrowserType.valueOf(ContextStore.get("browser", "chrome")));
+        log.warning("Initializing the driver...");
+        ContextStore.loadProperties("test.properties");
+        log.info("Properties loaded");
+        driver = Driver.setup(BrowserType.valueOf(ContextStore.get("browser", "chrome")));
+        ollama = new Ollama(
+                ContextStore.get("ollama-url").toString(),
+                ContextStore.get("ollama-token").toString()
+        );
     }
 
     @AfterAll
@@ -37,7 +39,10 @@ public class BaseTest {
 
     @BeforeEach
     public void beforeScenario(TestInfo testInfo) {
+        driver = Driver.setup(BrowserType.valueOf(ContextStore.get("browser", "chrome")));
         log.warning("RUNNING: " + testInfo.getDisplayName());
+        Driver.driver.manage().deleteAllCookies();
+        StatusWatcher.TestStatus.clear();
     }
 
     @AfterEach
@@ -45,6 +50,7 @@ public class BaseTest {
         if (isFailed()) ScreenCaptureUtility.captureScreen(
                 testInfo.getTags().stream().findFirst().orElse("NoTag"), "png", Driver.driver
         );
+        Driver.quitDriver();
     }
 
 }

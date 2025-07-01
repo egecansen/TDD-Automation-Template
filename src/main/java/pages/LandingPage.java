@@ -1,11 +1,11 @@
 package pages;
 
-import common.PageObject;
+import common.BaseObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
-public class LandingPage extends PageObject {
+public class LandingPage extends BaseObject {
 
     @FindBy(css = "[id='home_logo_reel'] [class='container-full-width']")
     public WebElement homeLogoReel;
@@ -25,11 +25,11 @@ public class LandingPage extends PageObject {
     @FindBy(css = "[class='navbar-nav ml-auto'] [class='nav-link btn btn-navy rounded text-nowrap']")
     public WebElement getADemoButton;
 
-    public void hoverOverNavigationItemByText(String targetMenuItem) {
+    public static void hoverOverNavigationItemByText(String targetMenuItem) {
         List<WebElement> mainNavigationItems = reflections.getElementsFromPage("mainNavigationItems", "LandingPage");
         for (WebElement item : mainNavigationItems) {
             if (item.getText().trim().equals(targetMenuItem)) {
-                hoverOver(item);
+                webInteractions.hoverOver(item);
                 break;
             }
         }

@@ -1,4 +1,4 @@
 package common;
 public enum BrowserType {
-    chrome, safari, firefox
+    chrome, safari, firefox, edge
 }

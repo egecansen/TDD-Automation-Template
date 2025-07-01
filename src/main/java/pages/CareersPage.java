@@ -1,12 +1,12 @@
 package pages;
 
-import common.PageObject;
+import common.BaseObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class CareersPage extends PageObject {
+public class CareersPage extends BaseObject {
 
     @FindBy(css = "[id='career-our-location']")
     public WebElement locationsBlock;
