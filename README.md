@@ -13,12 +13,6 @@ UI automation follows the Page Object Model for clarity and maintainability.
 * Screenshots taken during test failures are saved in `/screemshots` directory.
 * This framework can be used in headless mode by setting the property on `test.properties` file.
 
-## Features
-
-- **Selenium** for UI automation.
-- **JUnit 5** for test execution.
-- **Pickleib** for UI interactions.
-
 ## Prerequisites
 
 - Java 17
