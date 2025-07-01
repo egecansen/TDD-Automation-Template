@@ -1,11 +1,11 @@
 package pages;
 
-import common.BaseObject;
+import common.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
-public class LandingPage extends BaseObject {
+public class LandingPage extends PageObject {
 
     @FindBy(css = "[id='home_logo_reel'] [class='container-full-width']")
     public WebElement homeLogoReel;

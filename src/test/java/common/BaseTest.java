@@ -6,47 +6,44 @@ import ollama.Ollama;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.FluentWait;
 import pickleib.utilities.element.acquisition.ElementAcquisition;
 import pickleib.utilities.screenshot.ScreenCaptureUtility;
+import pickleib.web.interactions.WebInteractions;
 import utils.Printer;
 import static common.StatusWatcher.TestStatus.*;
 
 @ExtendWith(StatusWatcher.class)
 public class BaseTest {
 
-    public static Ollama ollama;
-    public BaseObject base = new BaseObject();
     public static Printer log = new Printer(BaseTest.class);
-    public ElementAcquisition.PageObjectModel<ObjectRepository> acquisition = new ElementAcquisition.PageObjectModel<>(ObjectRepository.class);
-    public static RemoteWebDriver driver;
+    public static Ollama ollama;
+    public WebInteractions interactions;
+    public RemoteWebDriver driver;
+    public FluentWait<RemoteWebDriver> wait;
+    public ElementAcquisition.PageObjectModel<ObjectRepository> acquisition;
 
     @BeforeAll
-    public static void globalSetup() {
-        log.warning("Initializing the driver...");
+    public static void setup(){
         ContextStore.loadProperties("test.properties");
         log.info("Properties loaded");
-        driver = Driver.setup(BrowserType.valueOf(ContextStore.get("browser", "chrome")));
         ollama = new Ollama(
                 ContextStore.get("ollama-url").toString(),
                 ContextStore.get("ollama-token").toString()
         );
     }
 
-    @AfterAll
-    public static void globalTeardown() {
-        Driver.quitDriver();
-    }
-
     @BeforeEach
-    public void beforeScenario(TestInfo testInfo) {
+    public void before(TestInfo testInfo){
         driver = Driver.setup(BrowserType.valueOf(ContextStore.get("browser", "chrome")));
+        wait = new FluentWait<>(driver);
+        acquisition = new ElementAcquisition.PageObjectModel<>(ObjectRepository.class);
+        interactions = new WebInteractions(driver, wait);
         log.warning("RUNNING: " + testInfo.getDisplayName());
-        Driver.driver.manage().deleteAllCookies();
-        StatusWatcher.TestStatus.clear();
     }
 
     @AfterEach
-    public void afterScenario(TestInfo testInfo) {
+    public void after(TestInfo testInfo){
         if (isFailed()) ScreenCaptureUtility.captureScreen(
                 testInfo.getTags().stream().findFirst().orElse("NoTag"), "png", Driver.driver
         );

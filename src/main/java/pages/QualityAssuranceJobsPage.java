@@ -1,6 +1,6 @@
 package pages;
 
-import common.BaseObject;
+import common.PageObject;
 import junit.framework.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,7 +8,7 @@ import utils.Printer;
 
 import java.util.List;
 
-public class QualityAssuranceJobsPage extends BaseObject {
+public class QualityAssuranceJobsPage extends PageObject {
 
     static  Printer log = new Printer(QualityAssuranceJobsPage.class);
 

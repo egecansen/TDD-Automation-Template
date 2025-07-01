@@ -1,10 +1,10 @@
 package pages;
 
-import common.BaseObject;
+import common.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class ProductDemoPage extends BaseObject {
+public class ProductDemoPage extends PageObject {
 
     @FindBy(css = "[class='btnDemo'] a")
     public WebElement exploreInsiderDemoButton;

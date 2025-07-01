@@ -19,6 +19,7 @@ public class Driver {
     static Printer log = new Printer(Driver.class);
 
     public static RemoteWebDriver setup(BrowserType browserType) {
+        log.important("Initializing the driver...");
         boolean headless = Boolean.parseBoolean(ContextStore.get("headless","false"));
         int frameWidth = Integer.parseInt(ContextStore.get("frame-width"));
         int frameHeight = Integer.parseInt(ContextStore.get("frame-height"));
@@ -61,7 +62,7 @@ public class Driver {
     }
 
     public static void quitDriver() {
-        log.warning("Terminating the driver...");
+        log.important("Terminating the driver...");
         driver.quit();
     }
 }

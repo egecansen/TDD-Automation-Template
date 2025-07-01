@@ -1,13 +1,13 @@
 package pages;
 
-import common.BaseObject;
+import common.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class DemoRequestPage extends BaseObject {
+public class DemoRequestPage extends PageObject {
 
     @FindBy(css = "[id='firstname-629d30a2-cfe0-4832-8a59-6867f1f0675b']")
-    public WebElement firsName;
+    public WebElement firstName;
 
     @FindBy(css = "[id='lastname-629d30a2-cfe0-4832-8a59-6867f1f0675b']")
     public WebElement lastName;
