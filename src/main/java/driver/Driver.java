@@ -9,8 +9,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import utils.Printer;
 import java.time.Duration;
-
-
 public class Driver {
 
     public static RemoteWebDriver driver;

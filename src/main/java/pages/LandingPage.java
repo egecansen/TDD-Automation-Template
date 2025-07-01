@@ -19,6 +19,12 @@ public class LandingPage extends PageObject {
     @FindBy(css = "[class*='dropdown-menu new-menu-dropdown-layout-6'] .dropdown-sub")
     public List<WebElement> companyMenuSubItems;
 
+    @FindBy(css = "[class='nav-link nav-no-dropdown'][id='highlight-en']")
+    public WebElement exploreInsider;
+
+    @FindBy(css = "[class='navbar-nav ml-auto'] [class='nav-link btn btn-navy rounded text-nowrap']")
+    public WebElement getADemoButton;
+
     public void hoverOverNavigationItemByText(String targetMenuItem) {
         List<WebElement> mainNavigationItems = reflections.getElementsFromPage("mainNavigationItems", "LandingPage");
         for (WebElement item : mainNavigationItems) {

@@ -53,6 +53,12 @@
       <version>3.3.2</version>
     </dependency>
 
+    <!-- ollama-api -->
+    <dependency>
+      <groupId>io.github.umutayb</groupId>
+      <artifactId>ollama-api</artifactId>
+      <version>0.0.5</version>
+    </dependency>
   </dependencies>
 
   <build>

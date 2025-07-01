@@ -5,6 +5,8 @@ import common.ObjectRepository;
 import common.StatusWatcher;
 import context.ContextStore;
 import driver.Driver;
+import okhttp3.Headers;
+import ollama.Ollama;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import pickleib.utilities.element.acquisition.ElementAcquisition;
@@ -17,6 +19,11 @@ public class BaseTest {
 
     public Printer log = new Printer(BaseTest.class);
     public ElementAcquisition.PageObjectModel<ObjectRepository> acquisition = new ElementAcquisition.PageObjectModel<>(ObjectRepository.class);
+    public Ollama ollama = new Ollama(
+            ContextStore.get("ollama-url").toString(),
+            Headers.of("Authorization", "Bearer " + ContextStore.get("ollama-token").toString(),
+                    "Content-Length", "20166")
+    );
 
     @BeforeAll
     public static void globalSetup() {
