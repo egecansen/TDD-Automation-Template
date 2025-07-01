@@ -9,6 +9,7 @@ UI automation follows the Page Object Model for clarity and maintainability.
 * The ObjectRepository provides easy access to all pages, initializing each during the flow execution.
 * UI interaction methods are used from the Pickleib library.
 * All element locators are generated before the interactions, and all actions are defined in the test cases.
+* StatusWatcher class is used for monitoring the test statuses.
 * Screenshots taken during test failures are saved in `/screemshots` directory.
 * This framework can be used in headless mode by setting the property on `test.properties` file.
 
