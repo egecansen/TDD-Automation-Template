@@ -4,10 +4,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>zan</groupId>
-  <artifactId>egecan_sen_case</artifactId>
+  <artifactId>TDD-Automation-Template</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>egecan_sen_case</name>
+  <name>TDD-Automation-Template</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
